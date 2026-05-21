@@ -8,7 +8,7 @@
 <meta property="og:title" content="Mantén Android Abierto — Cuenta atrás del Apocalipsis Android">
 <meta property="og:description" content="El bloqueo de sideloading de Google empieza en septiembre de 2026. Infórmate y haz ruido.">
 <meta property="og:type" content="website">
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -22,8 +22,9 @@
   --white: #e8e8e8;
   --muted: #555;
   --red: #ff3030;
-  --mono: 'Space Mono', monospace;
-  --display: 'Syne', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --display: 'Outfit', sans-serif;
+  --body: 'Inter', sans-serif;
 }
 
 html { scroll-behavior: smooth; }
@@ -31,9 +32,9 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--white);
-  font-family: var(--mono);
-  font-size: 14px;
-  line-height: 1.7;
+  font-family: var(--body);
+  font-size: 15px;
+  line-height: 1.8;
   min-height: 100vh;
 }
 
@@ -178,11 +179,12 @@ h1 .accent { color: var(--green); }
 h1 .dim { color: var(--muted); }
 
 .hero-sub {
-  font-size: clamp(13px, 2vw, 16px);
+  font-size: clamp(14px, 2vw, 17px);
   color: var(--muted);
   margin-top: 20px;
   max-width: 560px;
-  line-height: 1.8;
+  line-height: 1.85;
+  font-family: var(--body);
 }
 .hero-sub strong { color: var(--white); }
 
@@ -254,7 +256,7 @@ h2 {
   margin-bottom: 20px;
   line-height: 1.15;
 }
-p { color: #999; margin-bottom: 16px; max-width: 620px; }
+p { color: #999; margin-bottom: 16px; max-width: 620px; font-family: var(--body); font-size: 15px; line-height: 1.85; }
 p strong { color: var(--white); }
 p a { color: var(--green); text-decoration: none; border-bottom: 1px solid var(--green-dim); transition: border-color 0.2s; }
 p a:hover { border-color: var(--green); }
@@ -271,7 +273,7 @@ p a:hover { border-color: var(--green); }
 .card { background: var(--bg); padding: 28px 24px; }
 .card-icon { font-size: 22px; margin-bottom: 12px; display: block; }
 .card h3 { font-family: var(--display); font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--white); }
-.card p { font-size: 12px; line-height: 1.7; margin: 0; }
+.card p { font-size: 13px; line-height: 1.75; margin: 0; font-family: var(--body); }
 
 /* ─── MANIFESTO ─── */
 .manifesto {
@@ -280,14 +282,14 @@ p a:hover { border-color: var(--green); }
   background: rgba(0,255,65,0.03);
   margin: 40px 0;
 }
-.manifesto p { font-size: 15px; color: var(--white); font-style: italic; max-width: 100%; margin: 0; line-height: 1.9; }
+.manifesto p { font-size: 16px; color: var(--white); font-style: italic; max-width: 100%; margin: 0; line-height: 1.9; font-family: var(--body); }
 
 /* ─── WHO ─── */
 .who { display: flex; gap: 24px; align-items: flex-start; padding: 28px; border: 1px solid var(--border); background: var(--surface); margin: 40px 0; }
 .who-avatar { width: 48px; height: 48px; border: 1px solid var(--green-dim); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; background: rgba(0,255,65,0.05); }
 .who-text h3 { font-family: var(--display); font-size: 15px; font-weight: 700; margin-bottom: 4px; }
 .who-text h3 span { color: var(--green); }
-.who-text p { font-size: 12px; margin: 0; }
+.who-text p { font-size: 13px; margin: 0; font-family: var(--body); line-height: 1.75; }
 
 /* ─── CTA ─── */
 .cta-block {
@@ -312,7 +314,7 @@ p a:hover { border-color: var(--green); }
   pointer-events: none;
 }
 .cta-block h2 { font-size: clamp(20px, 4vw, 30px); margin-bottom: 12px; position: relative; }
-.cta-block p { font-size: 13px; margin: 0 auto 28px; max-width: 480px; position: relative; }
+.cta-block p { font-size: 14px; margin: 0 auto 28px; max-width: 480px; position: relative; font-family: var(--body); }
 .btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
 .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-decoration: none; text-transform: uppercase; cursor: pointer; transition: all 0.2s; border: none; }
 .btn-primary { background: var(--green); color: #000; font-weight: 700; }
@@ -327,7 +329,7 @@ p a:hover { border-color: var(--green); }
 .link-item:hover .link-arrow { transform: translateX(4px); color: var(--green); }
 .link-left { flex: 1; }
 .link-title { font-family: var(--display); font-size: 15px; font-weight: 700; transition: color 0.2s; margin-bottom: 2px; }
-.link-desc { font-size: 11px; color: var(--muted); }
+.link-desc { font-size: 12px; color: var(--muted); font-family: var(--body); }
 .link-arrow { color: var(--muted); transition: all 0.2s; font-size: 18px; }
 .link-tag { font-size: 9px; letter-spacing: 0.15em; color: var(--muted); border: 1px solid var(--border); padding: 2px 8px; text-transform: uppercase; }
 
@@ -340,7 +342,7 @@ p a:hover { border-color: var(--green); }
 
 /* ─── FOOTER ─── */
 footer { border-top: 1px solid var(--border); padding: 24px 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 80px; }
-.footer-left { font-size: 11px; color: var(--muted); }
+.footer-left { font-size: 12px; color: var(--muted); font-family: var(--body); }
 .footer-left a { color: var(--green); text-decoration: none; }
 .footer-right { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
 
