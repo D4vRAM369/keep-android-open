@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Keep Android Open · D4vRAM369</title>
-<meta name="description" content="Google is about to end anonymous sideloading on Android. Every developer should know what's at stake.">
-<meta property="og:title" content="Keep Android Open — Android Apocalypse Countdown">
-<meta property="og:description" content="Google's sideload lockdown starts September 2026. Learn what's at stake and make noise.">
+<title>Mantén Android Abierto · D4vRAM369</title>
+<meta name="description" content="Google va a acabar con el sideloading anónimo en Android. Todo desarrollador debería saber lo que está en juego.">
+<meta property="og:title" content="Mantén Android Abierto — Cuenta atrás del Apocalipsis Android">
+<meta property="og:description" content="El bloqueo de sideloading de Google empieza en septiembre de 2026. Infórmate y haz ruido.">
 <meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
@@ -37,7 +37,6 @@ body {
   min-height: 100vh;
 }
 
-/* Scanlines */
 body::before {
   content: '';
   position: fixed;
@@ -68,6 +67,13 @@ header {
   letter-spacing: 0.05em;
 }
 .logo span { color: var(--muted); }
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
 nav { display: flex; gap: 24px; }
 nav a {
   font-size: 11px;
@@ -79,6 +85,59 @@ nav a {
 }
 nav a:hover { color: var(--green); }
 
+/* ─── LANG TOGGLE ─── */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  user-select: none;
+}
+.lang-label {
+  text-transform: uppercase;
+  transition: color 0.2s;
+  font-size: 10px;
+}
+.lang-label.active { color: var(--green); }
+
+.toggle-wrap {
+  position: relative;
+  width: 36px;
+  height: 18px;
+  cursor: pointer;
+}
+.toggle-wrap input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+.toggle-track {
+  position: absolute;
+  inset: 0;
+  background: var(--green-dim);
+  border: 1px solid var(--green-dim);
+  transition: background 0.25s;
+}
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  background: var(--green);
+  transition: transform 0.25s, background 0.25s;
+  box-shadow: 0 0 6px rgba(0,255,65,0.5);
+}
+.toggle-wrap input:checked ~ .toggle-track { background: #0a0a1a; border-color: #2a2a5a; }
+.toggle-wrap input:checked ~ .toggle-track .toggle-thumb {
+  transform: translateX(18px);
+  background: #5599ff;
+  box-shadow: 0 0 6px rgba(85,153,255,0.5);
+}
+
 /* ─── HERO ─── */
 .hero {
   padding: 80px 32px 60px;
@@ -86,7 +145,6 @@ nav a:hover { color: var(--green); }
   margin: 0 auto;
   position: relative;
 }
-
 .hero-tag {
   display: inline-flex;
   align-items: center;
@@ -128,18 +186,14 @@ h1 .dim { color: var(--muted); }
 }
 .hero-sub strong { color: var(--white); }
 
-/* ─── COUNTDOWN STRIP ─── */
+/* ─── COUNTDOWN ─── */
 .countdown-strip {
   background: var(--surface);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   padding: 32px;
-  margin: 0;
 }
-.countdown-inner {
-  max-width: 860px;
-  margin: 0 auto;
-}
+.countdown-inner { max-width: 860px; margin: 0 auto; }
 .strip-label {
   font-size: 10px;
   letter-spacing: 0.25em;
@@ -147,11 +201,7 @@ h1 .dim { color: var(--muted); }
   text-transform: uppercase;
   margin-bottom: 20px;
 }
-.cd-row {
-  display: flex;
-  gap: 0;
-  align-items: flex-end;
-}
+.cd-row { display: flex; gap: 0; align-items: flex-end; }
 .cd-unit {
   display: flex;
   flex-direction: column;
@@ -178,20 +228,11 @@ h1 .dim { color: var(--muted); }
   text-transform: uppercase;
   margin-top: 4px;
 }
-.target-date {
-  font-size: 11px;
-  color: var(--muted);
-  margin-top: 16px;
-  letter-spacing: 0.1em;
-}
+.target-date { font-size: 11px; color: var(--muted); margin-top: 16px; letter-spacing: 0.1em; }
 .target-date strong { color: var(--red); }
 
-/* ─── MAIN CONTENT ─── */
-main {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 64px 32px;
-}
+/* ─── MAIN ─── */
+main { max-width: 860px; margin: 0 auto; padding: 64px 32px; }
 
 .section-title {
   font-size: 10px;
@@ -203,12 +244,7 @@ main {
   align-items: center;
   gap: 10px;
 }
-.section-title::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
+.section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
 h2 {
   font-family: var(--display);
@@ -218,17 +254,12 @@ h2 {
   margin-bottom: 20px;
   line-height: 1.15;
 }
-
-p {
-  color: #999;
-  margin-bottom: 16px;
-  max-width: 620px;
-}
+p { color: #999; margin-bottom: 16px; max-width: 620px; }
 p strong { color: var(--white); }
 p a { color: var(--green); text-decoration: none; border-bottom: 1px solid var(--green-dim); transition: border-color 0.2s; }
 p a:hover { border-color: var(--green); }
 
-/* ─── WHAT CHANGES ─── */
+/* ─── CARDS ─── */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -237,27 +268,10 @@ p a:hover { border-color: var(--green); }
   border: 1px solid var(--border);
   margin: 32px 0 48px;
 }
-.card {
-  background: var(--bg);
-  padding: 28px 24px;
-}
-.card-icon {
-  font-size: 22px;
-  margin-bottom: 12px;
-  display: block;
-}
-.card h3 {
-  font-family: var(--display);
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: var(--white);
-}
-.card p {
-  font-size: 12px;
-  line-height: 1.7;
-  margin: 0;
-}
+.card { background: var(--bg); padding: 28px 24px; }
+.card-icon { font-size: 22px; margin-bottom: 12px; display: block; }
+.card h3 { font-family: var(--display); font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--white); }
+.card p { font-size: 12px; line-height: 1.7; margin: 0; }
 
 /* ─── MANIFESTO ─── */
 .manifesto {
@@ -266,39 +280,12 @@ p a:hover { border-color: var(--green); }
   background: rgba(0,255,65,0.03);
   margin: 40px 0;
 }
-.manifesto p {
-  font-size: 15px;
-  color: var(--white);
-  font-style: italic;
-  max-width: 100%;
-  margin: 0;
-  line-height: 1.9;
-}
+.manifesto p { font-size: 15px; color: var(--white); font-style: italic; max-width: 100%; margin: 0; line-height: 1.9; }
 
-/* ─── WHO AM I ─── */
-.who {
-  display: flex;
-  gap: 24px;
-  align-items: flex-start;
-  padding: 28px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  margin: 40px 0;
-}
-.who-avatar {
-  width: 48px; height: 48px;
-  border: 1px solid var(--green-dim);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
-  background: rgba(0,255,65,0.05);
-}
-.who-text h3 {
-  font-family: var(--display);
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
+/* ─── WHO ─── */
+.who { display: flex; gap: 24px; align-items: flex-start; padding: 28px; border: 1px solid var(--border); background: var(--surface); margin: 40px 0; }
+.who-avatar { width: 48px; height: 48px; border: 1px solid var(--green-dim); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; background: rgba(0,255,65,0.05); }
+.who-text h3 { font-family: var(--display); font-size: 15px; font-weight: 700; margin-bottom: 4px; }
 .who-text h3 span { color: var(--green); }
 .who-text p { font-size: 12px; margin: 0; }
 
@@ -313,154 +300,57 @@ p a:hover { border-color: var(--green); }
   overflow: hidden;
 }
 .cta-block::before {
-  content: 'MAKE NOISE';
+  content: attr(data-bg-text);
   position: absolute;
   font-family: var(--display);
-  font-size: 120px;
+  font-size: 100px;
   font-weight: 800;
   color: rgba(0,255,65,0.03);
   top: 50%; left: 50%;
   transform: translate(-50%,-50%);
   white-space: nowrap;
   pointer-events: none;
-  letter-spacing: -0.02em;
 }
-.cta-block h2 {
-  font-size: clamp(20px, 4vw, 30px);
-  margin-bottom: 12px;
-  position: relative;
-}
-.cta-block p {
-  font-size: 13px;
-  margin: 0 auto 28px;
-  max-width: 480px;
-  position: relative;
-}
-.btn-row {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-  position: relative;
-}
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  font-family: var(--mono);
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-decoration: none;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.2s;
-  border: none;
-}
-.btn-primary {
-  background: var(--green);
-  color: #000;
-  font-weight: 700;
-}
+.cta-block h2 { font-size: clamp(20px, 4vw, 30px); margin-bottom: 12px; position: relative; }
+.cta-block p { font-size: 13px; margin: 0 auto 28px; max-width: 480px; position: relative; }
+.btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-decoration: none; text-transform: uppercase; cursor: pointer; transition: all 0.2s; border: none; }
+.btn-primary { background: var(--green); color: #000; font-weight: 700; }
 .btn-primary:hover { background: #00cc33; box-shadow: 0 0 24px rgba(0,255,65,0.3); }
-
-.btn-outline {
-  background: transparent;
-  color: var(--white);
-  border: 1px solid var(--border);
-}
+.btn-outline { background: transparent; color: var(--white); border: 1px solid var(--border); }
 .btn-outline:hover { border-color: var(--green); color: var(--green); }
 
-/* ─── LINKS LIST ─── */
-.links-section {
-  margin-top: 56px;
-}
-.link-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--border);
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.2s;
-  gap: 16px;
-}
+/* ─── LINKS ─── */
+.links-section { margin-top: 56px; }
+.link-item { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: all 0.2s; gap: 16px; }
 .link-item:hover .link-title { color: var(--green); }
 .link-item:hover .link-arrow { transform: translateX(4px); color: var(--green); }
 .link-left { flex: 1; }
-.link-title {
-  font-family: var(--display);
-  font-size: 15px;
-  font-weight: 700;
-  transition: color 0.2s;
-  margin-bottom: 2px;
-}
+.link-title { font-family: var(--display); font-size: 15px; font-weight: 700; transition: color 0.2s; margin-bottom: 2px; }
 .link-desc { font-size: 11px; color: var(--muted); }
-.link-arrow {
-  color: var(--muted);
-  transition: all 0.2s;
-  font-size: 18px;
-}
-.link-tag {
-  font-size: 9px;
-  letter-spacing: 0.15em;
-  color: var(--muted);
-  border: 1px solid var(--border);
-  padding: 2px 8px;
-  text-transform: uppercase;
-}
+.link-arrow { color: var(--muted); transition: all 0.2s; font-size: 18px; }
+.link-tag { font-size: 9px; letter-spacing: 0.15em; color: var(--muted); border: 1px solid var(--border); padding: 2px 8px; text-transform: uppercase; }
+
+/* ─── SHARE BAR ─── */
+.share-bar { background: rgba(0,255,65,0.06); border: 1px solid var(--green-dim); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 40px; }
+.share-bar span { font-size: 12px; color: var(--white); }
+.share-bar small { font-size: 11px; color: var(--muted); }
+.copy-btn { background: transparent; border: 1px solid var(--green-dim); color: var(--green); font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; padding: 6px 14px; cursor: pointer; transition: all 0.2s; text-transform: uppercase; }
+.copy-btn:hover { background: var(--green-dim); }
 
 /* ─── FOOTER ─── */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 24px 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 80px;
-}
+footer { border-top: 1px solid var(--border); padding: 24px 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 80px; }
 .footer-left { font-size: 11px; color: var(--muted); }
 .footer-left a { color: var(--green); text-decoration: none; }
 .footer-right { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
 
-/* ─── SHARE PROMPT ─── */
-.share-bar {
-  background: rgba(0,255,65,0.06);
-  border: 1px solid var(--green-dim);
-  padding: 12px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 40px;
-}
-.share-bar span { font-size: 12px; color: var(--white); }
-.share-bar small { font-size: 11px; color: var(--muted); }
-.copy-btn {
-  background: transparent;
-  border: 1px solid var(--green-dim);
-  color: var(--green);
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  padding: 6px 14px;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-transform: uppercase;
-}
-.copy-btn:hover { background: var(--green-dim); }
-
-/* Responsive */
+/* ─── RESPONSIVE ─── */
 @media (max-width: 560px) {
   header { padding: 12px 16px; }
   nav { display: none; }
   .hero, main { padding-left: 16px; padding-right: 16px; }
   .countdown-strip { padding: 24px 16px; }
-  .cd-row { gap: 0; flex-wrap: wrap; }
+  .cd-row { flex-wrap: wrap; }
   .cd-unit { padding-right: 20px; margin-right: 20px; }
   .who { flex-direction: column; }
   .cta-block { padding: 28px 20px; }
@@ -472,176 +362,212 @@ footer {
 
 <header>
   <div class="logo">D4vRAM<span>369</span> / keep-android-open</div>
-  <nav>
-    <a href="#what">What</a>
-    <a href="#why">Why</a>
-    <a href="#act">Act</a>
-    <a href="https://github.com/D4vRAM369" target="_blank">GitHub ↗</a>
-  </nav>
+  <div class="header-right">
+    <nav>
+      <a href="#que" data-es="Qué" data-en="What">Qué</a>
+      <a href="#por-que" data-es="Por qué" data-en="Why">Por qué</a>
+      <a href="#actua" data-es="Actúa" data-en="Act">Actúa</a>
+      <a href="https://github.com/D4vRAM369" target="_blank">GitHub ↗</a>
+    </nav>
+    <div class="lang-toggle" title="Cambiar idioma / Switch language">
+      <span class="lang-label active" id="lbl-es">ES</span>
+      <label class="toggle-wrap">
+        <input type="checkbox" id="lang-switch">
+        <div class="toggle-track">
+          <div class="toggle-thumb"></div>
+        </div>
+      </label>
+      <span class="lang-label" id="lbl-en">EN</span>
+    </div>
+  </div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-tag">
     <span class="dot"></span>
-    Developer Statement · 2026
+    <span data-es="Declaración de desarrollador · 2026" data-en="Developer Statement · 2026">Declaración de desarrollador · 2026</span>
   </div>
   <h1>
-    <span class="dim">Google is</span><br>
-    <span class="accent">killing</span><br>
+    <span class="dim" data-es="Google está" data-en="Google is">Google está</span><br>
+    <span class="accent" data-es="destruyendo" data-en="killing">destruyendo</span><br>
     Android<br>
-    <span class="dim">freedom.</span>
+    <span class="dim" data-es="para siempre." data-en="forever.">para siempre.</span>
   </h1>
   <p class="hero-sub">
-    In September 2026, Google will require every developer distributing APKs outside the Play Store to <strong>register their real identity</strong> — eliminating anonymous and pseudonymous publishing forever.<br><br>
-    This is not a security update. This is a <strong>power grab</strong>.
+    <span data-es="En septiembre de 2026, Google obligará a todo desarrollador que distribuya APKs fuera de Play Store a <strong>registrar su identidad real</strong> — eliminando la publicación anónima y pseudónima para siempre.<br><br>Esto no es una actualización de seguridad. Es un <strong>abuso de poder</strong>."
+          data-en="In September 2026, Google will require every developer distributing APKs outside the Play Store to <strong>register their real identity</strong> — eliminating anonymous and pseudonymous publishing forever.<br><br>This is not a security update. This is a <strong>power grab</strong>.">
+      En septiembre de 2026, Google obligará a todo desarrollador que distribuya APKs fuera de Play Store a <strong>registrar su identidad real</strong> — eliminando la publicación anónima y pseudónima para siempre.<br><br>Esto no es una actualización de seguridad. Es un <strong>abuso de poder</strong>.
+    </span>
   </p>
 </section>
 
-<!-- COUNTDOWN STRIP -->
-<div class="countdown-strip" id="what">
+<!-- COUNTDOWN -->
+<div class="countdown-strip" id="que">
   <div class="countdown-inner">
-    <div class="strip-label">// Time remaining until lockdown</div>
+    <div class="strip-label" data-es="// Tiempo restante hasta el bloqueo" data-en="// Time remaining until lockdown">// Tiempo restante hasta el bloqueo</div>
     <div class="cd-row">
       <div class="cd-unit">
         <div class="cd-num" id="cd-d">—</div>
-        <div class="cd-lbl">Days</div>
+        <div class="cd-lbl" data-es="Días" data-en="Days">Días</div>
       </div>
       <div class="cd-unit">
         <div class="cd-num" id="cd-h">—</div>
-        <div class="cd-lbl">Hours</div>
+        <div class="cd-lbl" data-es="Horas" data-en="Hours">Horas</div>
       </div>
       <div class="cd-unit">
         <div class="cd-num" id="cd-m">—</div>
-        <div class="cd-lbl">Mins</div>
+        <div class="cd-lbl" data-es="Mins" data-en="Mins">Mins</div>
       </div>
       <div class="cd-unit">
         <div class="cd-num" id="cd-s">—</div>
-        <div class="cd-lbl">Secs</div>
+        <div class="cd-lbl" data-es="Segs" data-en="Secs">Segs</div>
       </div>
     </div>
-    <div class="target-date">Target: <strong>September 1, 2026</strong> — Regional rollout (Brazil, Indonesia, Singapore, Thailand). Global enforcement in 2027.</div>
+    <div class="target-date">
+      <span data-es="Objetivo: <strong>1 de septiembre de 2026</strong> — Rollout regional (Brasil, Indonesia, Singapur, Tailandia). Bloqueo global en 2027."
+            data-en="Target: <strong>September 1, 2026</strong> — Regional rollout (Brazil, Indonesia, Singapore, Thailand). Global enforcement in 2027.">
+        Objetivo: <strong>1 de septiembre de 2026</strong> — Rollout regional (Brasil, Indonesia, Singapur, Tailandia). Bloqueo global en 2027.
+      </span>
+    </div>
   </div>
 </div>
 
-<!-- WHAT CHANGES -->
+<!-- MAIN -->
 <main>
-  <div id="why">
-    <div class="section-title">// What changes</div>
-    <h2>Three things every developer needs to understand</h2>
+  <div id="por-que">
+    <div class="section-title" data-es="// Qué cambia" data-en="// What changes">// Qué cambia</div>
+    <h2 data-es="Tres cosas que todo desarrollador necesita entender" data-en="Three things every developer needs to understand">Tres cosas que todo desarrollador necesita entender</h2>
 
     <div class="cards">
       <div class="card">
         <span class="card-icon">🪪</span>
-        <h3>No more anonymity</h3>
-        <p>Every APK distributed outside Play Store must be tied to a verified real identity — name, address, phone, ID documents. Pseudonymous publishing is dead.</p>
+        <h3 data-es="Adiós al anonimato" data-en="No more anonymity">Adiós al anonimato</h3>
+        <p data-es="Cualquier APK distribuida fuera de Play Store deberá estar vinculada a una identidad real verificada — nombre, dirección, teléfono, documentos. Publicar en pseudónimo desaparece."
+           data-en="Every APK distributed outside Play Store must be tied to a verified real identity — name, address, phone, ID documents. Pseudonymous publishing is dead.">
+          Cualquier APK distribuida fuera de Play Store deberá estar vinculada a una identidad real verificada — nombre, dirección, teléfono, documentos. Publicar en pseudónimo desaparece.
+        </p>
       </div>
       <div class="card">
         <span class="card-icon">🚧</span>
-        <h3>High-friction installs</h3>
-        <p>Even if you're registered, users installing your app face deliberate "Install without verifying" warning screens. Google is engineering distrust.</p>
+        <h3 data-es="Instalaciones con fricción deliberada" data-en="High-friction installs">Instalaciones con fricción deliberada</h3>
+        <p data-es='Aunque estés registrado, los usuarios que instalen tu app verán pantallas de aviso tipo "Instalar sin verificar". Google está ingeniando la desconfianza.'
+           data-en='Even if you&apos;re registered, users installing your app face deliberate "Install without verifying" warning screens. Google is engineering distrust.'>
+          Aunque estés registrado, los usuarios que instalen tu app verán pantallas de aviso tipo "Instalar sin verificar". Google está ingeniando la desconfianza.
+        </p>
       </div>
       <div class="card">
         <span class="card-icon">💀</span>
-        <h3>F-Droid & alternatives at risk</h3>
-        <p>Projects like F-Droid that host apps from anonymous contributors may not survive this. The open-source mobile ecosystem has no fallback plan yet.</p>
+        <h3 data-es="F-Droid y las alternativas, en peligro" data-en="F-Droid & alternatives at risk">F-Droid y las alternativas, en peligro</h3>
+        <p data-es="Proyectos como F-Droid que alojan apps de colaboradores anónimos pueden no sobrevivir esto. El ecosistema móvil open-source no tiene plan B todavía."
+           data-en="Projects like F-Droid that host apps from anonymous contributors may not survive this. The open-source mobile ecosystem has no fallback plan yet.">
+          Proyectos como F-Droid que alojan apps de colaboradores anónimos pueden no sobrevivir esto. El ecosistema móvil open-source no tiene plan B todavía.
+        </p>
       </div>
     </div>
 
     <div class="manifesto">
       <p>
-        Android's openness was never a bug. It was the point.<br>
-        It's why developers built things that mattered.<br>
-        It's why people in hostile environments could distribute tools safely.<br>
-        It's why I publish my apps without asking permission from a corporation.<br><br>
-        <strong>When Google kills anonymous sideloading, they don't just change a policy — they change who gets to build.</strong>
+        <span data-es="La apertura de Android nunca fue un error. Era el punto.<br>Por eso los desarrolladores construyeron cosas que importaban.<br>Por eso las personas en entornos hostiles podían distribuir herramientas de forma segura.<br>Por eso yo publico mis apps sin pedirle permiso a ninguna corporación.<br><br><strong>Cuando Google mata el sideloading anónimo, no solo cambia una política — cambia quién tiene derecho a construir.</strong>"
+               data-en="Android's openness was never a bug. It was the point.<br>It's why developers built things that mattered.<br>It's why people in hostile environments could distribute tools safely.<br>It's why I publish my apps without asking permission from a corporation.<br><br><strong>When Google kills anonymous sideloading, they don't just change a policy — they change who gets to build.</strong>">
+          La apertura de Android nunca fue un error. Era el punto.<br>
+          Por eso los desarrolladores construyeron cosas que importaban.<br>
+          Por eso las personas en entornos hostiles podían distribuir herramientas de forma segura.<br>
+          Por eso yo publico mis apps sin pedirle permiso a ninguna corporación.<br><br>
+          <strong>Cuando Google mata el sideloading anónimo, no solo cambia una política — cambia quién tiene derecho a construir.</strong>
+        </span>
       </p>
     </div>
   </div>
 
-  <!-- WHO AM I -->
+  <!-- WHO -->
   <div class="who">
     <div class="who-avatar">⚡</div>
     <div class="who-text">
-      <h3><span>D4vRAM369</span> — Self-taught Android developer, Gran Canaria</h3>
-      <p>I build open-source Android apps focused on health, privacy, and daily utilities. I distribute through GitHub and IzzyOnDroid because I believe software doesn't need a corporate gatekeeper. This policy threatens every developer who thinks the same.</p>
+      <h3><span>D4vRAM369</span> — <span data-es="Desarrollador Android autodidacta, Gran Canaria" data-en="Self-taught Android developer, Gran Canaria">Desarrollador Android autodidacta, Gran Canaria</span></h3>
+      <p data-es="Construyo apps Android open-source centradas en salud, privacidad y utilidades cotidianas. Las distribuyo por GitHub e IzzyOnDroid porque creo que el software no necesita un guardián corporativo. Esta política amenaza a cualquier desarrollador que piense igual."
+         data-en="I build open-source Android apps focused on health, privacy, and daily utilities. I distribute through GitHub and IzzyOnDroid because I believe software doesn't need a corporate gatekeeper. This policy threatens every developer who thinks the same.">
+        Construyo apps Android open-source centradas en salud, privacidad y utilidades cotidianas. Las distribuyo por GitHub e IzzyOnDroid porque creo que el software no necesita un guardián corporativo. Esta política amenaza a cualquier desarrollador que piense igual.
+      </p>
     </div>
   </div>
 
   <!-- ACT -->
-  <div id="act">
-    <div class="section-title">// What you can do</div>
-    <h2>Don't just watch. Make noise.</h2>
-    <p>This affects every independent developer, every privacy-focused project, every person who has ever installed an APK. The more voices, the harder it is to ignore.</p>
+  <div id="actua">
+    <div class="section-title" data-es="// Qué puedes hacer" data-en="// What you can do">// Qué puedes hacer</div>
+    <h2 data-es="No te quedes mirando. Haz ruido." data-en="Don't just watch. Make noise.">No te quedes mirando. Haz ruido.</h2>
+    <p data-es="Esto afecta a cada desarrollador independiente, a cada proyecto centrado en la privacidad, a cada persona que alguna vez ha instalado un APK. Cuantas más voces, más difícil es ignorarlo."
+       data-en="This affects every independent developer, every privacy-focused project, every person who has ever installed an APK. The more voices, the harder it is to ignore.">
+      Esto afecta a cada desarrollador independiente, a cada proyecto centrado en la privacidad, a cada persona que alguna vez ha instalado un APK. Cuantas más voces, más difícil es ignorarlo.
+    </p>
 
-    <div class="cta-block">
-      <h2>Spread the word</h2>
-      <p>Share this page. Talk about it. Post about it. The community that built Android open deserves to fight for it.</p>
+    <div class="cta-block" data-bg-text="HAZ RUIDO">
+      <h2 data-es="Difunde el mensaje" data-en="Spread the word">Difunde el mensaje</h2>
+      <p data-es="Comparte esta página. Habla de ello. Publícalo. La comunidad que construyó Android abierto merece luchar por él."
+         data-en="Share this page. Talk about it. Post about it. The community that built Android open deserves to fight for it.">
+        Comparte esta página. Habla de ello. Publícalo. La comunidad que construyó Android abierto merece luchar por él.
+      </p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="https://keepandroidopen.org" target="_blank">
-          → keepandroidopen.org
-        </a>
-        <a class="btn btn-outline" href="https://github.com/D4vRAM369" target="_blank">
-          My projects on GitHub
-        </a>
+        <a class="btn btn-primary" href="https://keepandroidopen.org" target="_blank">→ keepandroidopen.org</a>
+        <a class="btn btn-outline" href="https://github.com/D4vRAM369" target="_blank" data-es="Mis proyectos en GitHub" data-en="My projects on GitHub">Mis proyectos en GitHub</a>
       </div>
     </div>
 
     <div class="share-bar">
       <div>
-        <span>Share this page</span><br>
+        <span data-es="Comparte esta página" data-en="Share this page">Comparte esta página</span><br>
         <small id="page-url">https://d4vram369.github.io/keep-android-open</small>
       </div>
-      <button class="copy-btn" onclick="copyUrl()">Copy link</button>
+      <button class="copy-btn" onclick="copyUrl()" data-es="Copiar enlace" data-en="Copy link">Copiar enlace</button>
     </div>
   </div>
 
   <!-- LINKS -->
   <div class="links-section">
-    <div class="section-title">// Further reading</div>
+    <div class="section-title" data-es="// Para leer más" data-en="// Further reading">// Para leer más</div>
 
     <a class="link-item" href="https://keepandroidopen.org" target="_blank">
       <div class="link-left">
         <div class="link-title">Keep Android Open</div>
-        <div class="link-desc">Community campaign against the sideloading restrictions</div>
+        <div class="link-desc" data-es="Campaña comunitaria contra las restricciones de sideloading" data-en="Community campaign against the sideloading restrictions">Campaña comunitaria contra las restricciones de sideloading</div>
       </div>
-      <span class="link-tag">Campaign</span>
+      <span class="link-tag" data-es="Campaña" data-en="Campaign">Campaña</span>
       <span class="link-arrow">→</span>
     </a>
 
     <a class="link-item" href="https://f-droid.org" target="_blank">
       <div class="link-left">
         <div class="link-title">F-Droid</div>
-        <div class="link-desc">The open-source Android app repository most at risk</div>
+        <div class="link-desc" data-es="El repositorio de apps Android open-source más amenazado" data-en="The open-source Android app repository most at risk">El repositorio de apps Android open-source más amenazado</div>
       </div>
-      <span class="link-tag">App Store</span>
+      <span class="link-tag" data-es="Tienda" data-en="App Store">Tienda</span>
       <span class="link-arrow">→</span>
     </a>
 
     <a class="link-item" href="https://troypoint.com/google-confirms-android-sideloading-restrictions-for-2026/" target="_blank">
       <div class="link-left">
         <div class="link-title">Google Confirms Restrictions — TroyPoint</div>
-        <div class="link-desc">Full breakdown of what Google's "Accountability Layer" actually means</div>
+        <div class="link-desc" data-es="Análisis completo de lo que realmente significa la 'Accountability Layer' de Google" data-en="Full breakdown of what Google's 'Accountability Layer' actually means">Análisis completo de lo que realmente significa la "Accountability Layer" de Google</div>
       </div>
-      <span class="link-tag">Article</span>
+      <span class="link-tag" data-es="Artículo" data-en="Article">Artículo</span>
       <span class="link-arrow">→</span>
     </a>
 
     <a class="link-item" href="https://android.gadgethacks.com/news/google-keeps-android-sideloading-for-power-users-in-2026/" target="_blank">
       <div class="link-left">
         <div class="link-title">What Power Users Can Still Do — Gadget Hacks</div>
-        <div class="link-desc">The "advanced user" path and what hoops you'll need to jump through</div>
+        <div class="link-desc" data-es="La ruta para 'usuarios avanzados' y los obstáculos que tendrás que superar" data-en="The 'advanced user' path and what hoops you'll need to jump through">La ruta para "usuarios avanzados" y los obstáculos que tendrás que superar</div>
       </div>
-      <span class="link-tag">Article</span>
+      <span class="link-tag" data-es="Artículo" data-en="Article">Artículo</span>
       <span class="link-arrow">→</span>
     </a>
 
     <a class="link-item" href="https://github.com/D4vRAM369" target="_blank">
       <div class="link-left">
-        <div class="link-title">D4vRAM369 on GitHub</div>
-        <div class="link-desc">My apps — the kind of projects this policy wants to bury</div>
+        <div class="link-title">D4vRAM369 en GitHub</div>
+        <div class="link-desc" data-es="Mis apps — el tipo de proyectos que esta política quiere enterrar" data-en="My apps — the kind of projects this policy wants to bury">Mis apps — el tipo de proyectos que esta política quiere enterrar</div>
       </div>
-      <span class="link-tag">Projects</span>
+      <span class="link-tag" data-es="Proyectos" data-en="Projects">Proyectos</span>
       <span class="link-arrow">→</span>
     </a>
   </div>
@@ -649,17 +575,16 @@ footer {
 
 <footer>
   <div class="footer-left">
-    Built by <a href="https://github.com/D4vRAM369">D4vRAM369</a> · Las Palmas de Gran Canaria<br>
-    Open source. No tracking. No ads.
+    <span data-es="Hecho por" data-en="Built by">Hecho por</span> <a href="https://github.com/D4vRAM369">D4vRAM369</a> · Las Palmas de Gran Canaria<br>
+    <span data-es="Open source. Sin rastreo. Sin anuncios." data-en="Open source. No tracking. No ads.">Open source. Sin rastreo. Sin anuncios.</span>
   </div>
   <div class="footer-right">KEEP ANDROID OPEN · 2026</div>
 </footer>
 
 <script>
+// ─── COUNTDOWN ───
 const TARGET = new Date('2026-09-01T00:00:00Z').getTime();
-
 function pad(n) { return String(Math.max(0,n)).padStart(2,'0'); }
-
 function tick() {
   const diff = TARGET - Date.now();
   if (diff <= 0) {
@@ -675,17 +600,69 @@ function tick() {
   secEl.classList.add('flash');
   setTimeout(() => secEl.classList.remove('flash'), 150);
 }
-
 tick();
 setInterval(tick, 1000);
 
+// ─── COPY URL ───
 function copyUrl() {
   const url = document.getElementById('page-url').textContent;
+  const btn = document.querySelector('.copy-btn');
   navigator.clipboard.writeText(url).then(() => {
-    const btn = document.querySelector('.copy-btn');
-    btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy link', 2000);
+    const isEN = document.getElementById('lang-switch').checked;
+    btn.textContent = isEN ? 'Copied!' : '¡Copiado!';
+    setTimeout(() => btn.textContent = isEN ? 'Copy link' : 'Copiar enlace', 2000);
   });
+}
+
+// ─── i18n ───
+const langSwitch = document.getElementById('lang-switch');
+const lblES = document.getElementById('lbl-es');
+const lblEN = document.getElementById('lbl-en');
+
+function applyLang(isEN) {
+  const lang = isEN ? 'en' : 'es';
+  document.documentElement.lang = lang;
+
+  // Todos los elementos con data-es / data-en
+  document.querySelectorAll('[data-es][data-en]').forEach(el => {
+    const text = el.getAttribute('data-' + lang);
+    if (text !== null) el.innerHTML = text;
+  });
+
+  // CTA background text
+  const cta = document.querySelector('.cta-block');
+  if (cta) cta.setAttribute('data-bg-text', isEN ? 'MAKE NOISE' : 'HAZ RUIDO');
+
+  // Nav anchors (ids cambian con idioma)
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  const anchors = isEN
+    ? ['#que','#por-que','#actua']
+    : ['#que','#por-que','#actua'];
+  // ids no cambian, solo el texto del link
+  navLinks.forEach(a => {
+    const es = a.getAttribute('data-es');
+    const en = a.getAttribute('data-en');
+    if (es && en) a.textContent = isEN ? en : es;
+  });
+
+  // Labels toggle
+  lblES.classList.toggle('active', !isEN);
+  lblEN.classList.toggle('active', isEN);
+
+  // Title
+  document.title = isEN
+    ? 'Keep Android Open · D4vRAM369'
+    : 'Mantén Android Abierto · D4vRAM369';
+}
+
+langSwitch.addEventListener('change', () => applyLang(langSwitch.checked));
+
+// ─── AUTO-DETECT ───
+const browserLang = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
+const startEN = !browserLang.startsWith('es');
+if (startEN) {
+  langSwitch.checked = true;
+  applyLang(true);
 }
 </script>
 </body>
