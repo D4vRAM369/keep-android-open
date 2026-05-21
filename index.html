@@ -146,6 +146,15 @@ nav a:hover { color: var(--green); }
   margin: 0 auto;
   position: relative;
 }
+.hero-illustration {
+  float: right;
+  width: 200px;
+  margin: 0 0 24px 32px;
+  border: 1px solid var(--border);
+  background: #090909;
+  overflow: hidden;
+  shape-outside: margin-box;
+}
 .hero-tag {
   display: inline-flex;
   align-items: center;
@@ -187,6 +196,10 @@ h1 .dim { color: var(--muted); }
   font-family: var(--body);
 }
 .hero-sub strong { color: var(--white); }
+
+@media (max-width: 600px) {
+  .hero-illustration { width: 130px; margin-left: 16px; }
+}
 
 /* ─── COUNTDOWN ─── */
 .countdown-strip {
@@ -386,22 +399,130 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; display: flex;
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-tag">
-    <span class="dot"></span>
-    <span data-es="Declaración de desarrollador · 2026" data-en="Developer Statement · 2026">Declaración de desarrollador · 2026</span>
-  </div>
-  <h1>
-    <span class="dim" data-es="Google está" data-en="Google is">Google está</span><br>
-    <span class="accent" data-es="destruyendo" data-en="killing">destruyendo</span><br>
-    Android<br>
-    <span class="dim" data-es="para siempre." data-en="forever.">para siempre.</span>
-  </h1>
-  <p class="hero-sub">
-    <span data-es="En septiembre de 2026, Google obligará a todo desarrollador que distribuya APKs fuera de Play Store a <strong>registrar su identidad real</strong> — eliminando la publicación anónima y pseudónima para siempre.<br><br>Esto no es una actualización de seguridad. Es un <strong>abuso de poder</strong>."
-          data-en="In September 2026, Google will require every developer distributing APKs outside the Play Store to <strong>register their real identity</strong> — eliminating anonymous and pseudonymous publishing forever.<br><br>This is not a security update. This is a <strong>power grab</strong>.">
-      En septiembre de 2026, Google obligará a todo desarrollador que distribuya APKs fuera de Play Store a <strong>registrar su identidad real</strong> — eliminando la publicación anónima y pseudónima para siempre.<br><br>Esto no es una actualización de seguridad. Es un <strong>abuso de poder</strong>.
-    </span>
-  </p>
+
+  <!-- ILLUSTRATION — floated right, sits beside h1 -->
+  <div class="hero-illustration">
+    <svg width="100%" viewBox="0 0 680 520" role="img" xmlns="http://www.w3.org/2000/svg">
+    <title>G vigilante aplasta a Andy</title>
+    <desc>Símbolo corporativo — letra G con ojo panóptico — descendiendo sobre Andy que queda KO</desc>
+    <style>
+      .G-drop { animation: slam 2.4s cubic-bezier(.3,0,.2,1) infinite; }
+      @keyframes slam {
+        0%   { transform: translateY(-32px); }
+        50%  { transform: translateY(0px); }
+        66%  { transform: translateY(-9px); }
+        82%  { transform: translateY(0px); }
+        100% { transform: translateY(-32px); }
+      }
+      .pupil { animation: look 2.4s ease-in-out infinite; }
+      @keyframes look {
+        0%,40%  { transform: translate(0px,-4px); }
+        50%,90% { transform: translate(0px,6px); }
+        100%    { transform: translate(0px,-4px); }
+      }
+      .blink { animation: blnk 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 50%; }
+      @keyframes blnk {
+        0%,44%  { transform: scaleY(1); }
+        47%     { transform: scaleY(0.05); }
+        50%,100%{ transform: scaleY(1); }
+      }
+      .andy { animation: squish 2.4s cubic-bezier(.3,0,.2,1) infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+      @keyframes squish {
+        0%,47%  { transform: scaleY(1) scaleX(1); }
+        54%,82% { transform: scaleY(0.82) scaleX(1.12); }
+        100%    { transform: scaleY(1) scaleX(1); }
+      }
+      .fx { animation: pop 2.4s ease-in-out infinite; }
+      @keyframes pop {
+        0%,49%  { opacity:0; }
+        57%     { opacity:1; }
+        86%,100%{ opacity:0; }
+      }
+      .sweep { animation: scan 5s linear infinite; }
+      @keyframes scan {
+        from { transform: translateY(-60px); }
+        to   { transform: translateY(580px); }
+      }
+      .redglow { animation: rglow 2.4s ease-in-out infinite; }
+      @keyframes rglow {
+        0%,44%  { opacity:0.18; }
+        50%,100%{ opacity:0.5; }
+      }
+    </style>
+    <rect width="680" height="520" fill="#090909"/>
+    <g stroke="#00ff41" stroke-width="0.4" opacity="0.05">
+      <line x1="0" y1="100" x2="680" y2="100"/><line x1="0" y1="200" x2="680" y2="200"/>
+      <line x1="0" y1="300" x2="680" y2="300"/><line x1="0" y1="400" x2="680" y2="400"/>
+      <line x1="136" y1="0" x2="136" y2="520"/><line x1="272" y1="0" x2="272" y2="520"/>
+      <line x1="408" y1="0" x2="408" y2="520"/><line x1="544" y1="0" x2="544" y2="520"/>
+    </g>
+    <rect class="sweep" x="0" y="0" width="680" height="50" fill="#00ff41" opacity="0.022"/>
+    <!-- G + EYE -->
+    <g class="G-drop">
+      <ellipse class="redglow" cx="340" cy="148" rx="148" ry="148" fill="#ff2020"/>
+      <path d="M340 28 A120 120 0 1 0 460 148 L460 148 L390 148 A50 50 0 1 1 340 98 Z" fill="#111111" stroke="#cc0000" stroke-width="3"/>
+      <rect x="370" y="132" width="90" height="34" rx="4" fill="#111111" stroke="#cc0000" stroke-width="3"/>
+      <path d="M340 42 A106 106 0 1 0 446 148 L390 148 A50 50 0 1 1 340 98 Z" fill="none" stroke="#330000" stroke-width="1" opacity="0.6"/>
+      <ellipse class="blink" cx="318" cy="118" rx="38" ry="22" fill="#e8e8e8"/>
+      <circle cx="318" cy="118" r="14" fill="#880000"/>
+      <g class="pupil">
+        <circle cx="318" cy="118" r="8" fill="#0a0000"/>
+        <circle cx="322" cy="114" r="3" fill="white" opacity="0.7"/>
+      </g>
+      <path d="M280 118 Q318 90 356 118" stroke="#555" stroke-width="1.5" fill="none" opacity="0.5"/>
+      <path d="M280 118 Q318 146 356 118" stroke="#555" stroke-width="1.5" fill="none" opacity="0.5"/>
+      <g stroke="#444" stroke-width="1.2" stroke-linecap="round" opacity="0.6">
+        <line x1="292" y1="102" x2="289" y2="96"/><line x1="304" y1="96" x2="303" y2="90"/>
+        <line x1="318" y1="93" x2="318" y2="87"/><line x1="332" y1="96" x2="333" y2="90"/>
+        <line x1="344" y1="102" x2="347" y2="96"/>
+      </g>
+      <ellipse cx="340" cy="252" rx="130" ry="11" fill="#000" opacity="0.4"/>
+    </g>
+    <!-- ANDY -->
+    <g class="andy">
+      <ellipse cx="340" cy="490" rx="92" ry="10" fill="#000" opacity="0.5"/>
+      <rect x="302" y="435" width="34" height="40" rx="14" fill="#6ab04c"/>
+      <rect x="344" y="435" width="34" height="40" rx="14" fill="#6ab04c"/>
+      <rect x="280" y="330" width="120" height="112" rx="14" fill="#6ab04c"/>
+      <rect x="244" y="346" width="34" height="80" rx="17" fill="#6ab04c"/>
+      <rect x="402" y="346" width="34" height="80" rx="17" fill="#6ab04c"/>
+      <rect x="280" y="276" width="120" height="58" rx="0" fill="#6ab04c"/>
+      <path d="M280 276 A60 60 0 0 1 400 276 Z" fill="#6ab04c"/>
+      <rect x="280" y="328" width="120" height="4" fill="#090909"/>
+      <rect x="280" y="330" width="120" height="5" fill="#6ab04c"/>
+      <line x1="308" y1="220" x2="295" y2="254" stroke="#6ab04c" stroke-width="5" stroke-linecap="round"/>
+      <line x1="372" y1="220" x2="387" y2="254" stroke="#6ab04c" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="318" cy="290" r="9" fill="white"/>
+      <circle cx="362" cy="290" r="9" fill="white"/>
+      <line x1="312" y1="284" x2="324" y2="296" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="324" y1="284" x2="312" y2="296" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="356" y1="284" x2="368" y2="296" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="368" y1="284" x2="356" y2="296" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M320 314 Q330 324 340 318 Q350 312 360 322" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <ellipse cx="288" cy="272" rx="5" ry="8" fill="#8ee060" opacity="0.7" transform="rotate(-20 288 272)"/>
+    </g>
+    <!-- FX -->
+    <g class="fx">
+      <path d="M340 258 L306 290 L286 314" stroke="#00ff41" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.9"/>
+      <path d="M340 258 L376 292 L398 312" stroke="#00ff41" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.9"/>
+      <path d="M340 260 L336 296" stroke="#00ff41" stroke-width="1" fill="none" opacity="0.45"/>
+      <ellipse cx="340" cy="264" rx="60" ry="10" stroke="#00ff41" stroke-width="1.2" fill="none" opacity="0.5"/>
+      <ellipse cx="340" cy="264" rx="92" ry="16" stroke="#00ff41" stroke-width="0.6" fill="none" opacity="0.22"/>
+      <g transform="translate(214 268)" stroke="#ffd700" fill="none" stroke-linecap="round">
+        <line x1="0" y1="-12" x2="0" y2="12" stroke-width="2.5"/>
+        <line x1="-12" y1="0" x2="12" y2="0" stroke-width="2.5"/>
+        <line x1="-8" y1="-8" x2="8" y2="8" stroke-width="1.8"/>
+        <line x1="8" y1="-8" x2="-8" y2="8" stroke-width="1.8"/>
+      </g>
+      <g transform="translate(466 258)" stroke="#ffd700" fill="none" stroke-linecap="round">
+        <line x1="0" y1="-10" x2="0" y2="10" stroke-width="2.5"/>
+        <line x1="-10" y1="0" x2="10" y2="0" stroke-width="2.5"/>
+        <line x1="-7" y1="-7" x2="7" y2="7" stroke-width="1.8"/>
+        <line x1="7" y1="-7" x2="-7" y2="7" stroke-width="1.8"/>
+      </g>
+      <text x="340" y="512" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="11" fill="#ff2020" opacity="0.5" letter-spacing="8">C R U N C H</text>
+    </g>
+    </svg>
 </section>
 
 <!-- COUNTDOWN -->
@@ -487,9 +608,9 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; display: flex;
     <div class="who-avatar">⚡</div>
     <div class="who-text">
       <h3><span>D4vRAM369</span> — <span data-es="Desarrollador Android autodidacta, Gran Canaria" data-en="Self-taught Android developer, Gran Canaria">Desarrollador Android autodidacta, Gran Canaria</span></h3>
-      <p data-es="Construyo apps Android open-source centradas en salud, privacidad y utilidades cotidianas. Las distribuyo por GitHub e IzzyOnDroid porque creo que el software no necesita un guardián corporativo. Esta política amenaza a cualquier desarrollador que piense igual."
-         data-en="I build open-source Android apps focused on health, privacy, and daily utilities. I distribute through GitHub and IzzyOnDroid because I believe software doesn't need a corporate gatekeeper. This policy threatens every developer who thinks the same.">
-        Construyo apps Android open-source centradas en salud, privacidad y utilidades cotidianas. Las distribuyo por GitHub e IzzyOnDroid porque creo que el software no necesita un guardián corporativo. Esta política amenaza a cualquier desarrollador que piense igual.
+      <p data-es="Construyo apps Android open-source centradas en salud, privacidad y utilidades cotidianas. Las distribuyo por GitHub e IzzyOnDroid porque creo que el software no necesita un guardián corporativo como Play Store — especialmente en el ecosistema <strong>AOSP (Android Open Source Project)</strong>. Esta política amenaza a cualquier desarrollador que piense igual."
+         data-en="I build open-source Android apps focused on health, privacy, and daily utilities. I distribute through GitHub and IzzyOnDroid because I believe software doesn't need a corporate gatekeeper like Play Store — especially in the <strong>AOSP (Android Open Source Project)</strong> ecosystem. This policy threatens every developer who thinks the same.">
+        Construyo apps Android open-source centradas en salud, privacidad y utilidades cotidianas. Las distribuyo por GitHub e IzzyOnDroid porque creo que el software no necesita un guardián corporativo como Play Store — especialmente en el ecosistema <strong>AOSP (Android Open Source Project)</strong>. Esta política amenaza a cualquier desarrollador que piense igual.
       </p>
     </div>
   </div>
