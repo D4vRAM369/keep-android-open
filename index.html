@@ -404,7 +404,7 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; display: flex;
   <div class="hero-illustration">
     <svg width="100%" viewBox="0 0 680 520" role="img" xmlns="http://www.w3.org/2000/svg">
     <title>G oscura dispara un láser rojo contra Andy</title>
-    <desc>Una G negra y amenazante dispara desde su ojo un láser rojo brillante contra Andy.</desc>
+    <desc>Una G dispara un láser contra Andy, que se desintegra. Aparecen dos sellos CENSORED, se escribe Don’t be evil, se tacha Don’t con los colores de Chrome y aparece Google is evil.</desc>
     <style>
       .oppression { animation: oppression 5s linear infinite; }
       .fracture { animation: fracture 5s linear infinite; }
@@ -449,12 +449,37 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; display: flex;
         .heat-eye, .eye-laser { opacity: 1; }
         .debris rect { opacity: 0; }
       }
+
+      /* Twelve-second loop: impact, two stamps, typed slogan, strike, verdict. */
+      .story-scene { animation: story-scene 12s linear infinite; }
+      .ending { animation: ending-visible 12s linear infinite; }
+      .ending-stamp-one { animation: stamp-one 12s linear infinite; }
+      .ending-stamp-two { animation: stamp-two 12s linear infinite; }
+      .typed-reveal { animation: slogan-type 12s steps(13, end) infinite; }
+      .chrome-strike { stroke-dasharray: 90; stroke-dashoffset: 90; animation: chrome-strike 12s linear infinite; }
+      .evil-reveal { animation: evil-type 12s steps(14, end) infinite; }
+      @keyframes story-scene { 0%,41% { opacity: 1; } 42%,99.9% { opacity: 0; } 100% { opacity: 1; } }
+      @keyframes ending-visible { 0%,41% { opacity: 0; } 42%,99.9% { opacity: 1; } 100% { opacity: 0; } }
+      @keyframes stamp-one { 0%,42% { opacity: 0; } 43%,51% { opacity: 1; } 52%,100% { opacity: 0; } }
+      @keyframes stamp-two { 0%,51% { opacity: 0; } 52%,60% { opacity: 1; } 61%,100% { opacity: 0; } }
+      @keyframes slogan-type { 0%,61% { width: 0px; } 74%,100% { width: 450px; } }
+      @keyframes chrome-strike { 0%,76% { stroke-dashoffset: 90; } 82%,100% { stroke-dashoffset: 0; } }
+      @keyframes evil-type { 0%,84% { width: 0px; } 94%,100% { width: 510px; } }
+      @media (prefers-reduced-motion: reduce) {
+        .story-scene { animation: none; opacity: 0; }
+        .ending { animation: none; opacity: 1; }
+        .ending-stamp-one, .ending-stamp-two { animation: none; opacity: 0; }
+        .typed-reveal { animation: none; width: 450px; }
+        .chrome-strike { animation: none; stroke-dashoffset: 0; }
+        .evil-reveal { animation: none; width: 510px; }
+      }
     </style>
     <defs>
       <filter id="laser-glow" x="-100%" y="-100%" width="300%" height="300%">
         <feGaussianBlur stdDeviation="5"/>
       </filter>
     </defs>
+    <g class="story-scene">
     <rect width="680" height="520" fill="#030304"/>
     <g stroke="#00ff41" stroke-width="0.4" opacity="0.05">
       <line x1="0" y1="100" x2="680" y2="100"/><line x1="0" y1="200" x2="680" y2="200"/>
@@ -567,6 +592,30 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; display: flex;
         <line x1="7" y1="-7" x2="-7" y2="7" stroke-width="1.8"/>
       </g>
       <text x="340" y="512" text-anchor="middle" font-family="Arial Black, sans-serif" font-weight="900" font-size="11" fill="#ff2020" opacity="0.5" letter-spacing="8">C R U N C H</text>
+    </g>
+    </g>
+    <defs>
+      <clipPath id="slogan-typing"><rect class="typed-reveal" x="128" y="224" width="0" height="65"/></clipPath>
+      <clipPath id="evil-typing"><rect class="evil-reveal" x="90" y="330" width="0" height="75"/></clipPath>
+    </defs>
+    <g class="ending" aria-hidden="true">
+      <rect width="680" height="520" fill="#030304"/>
+      <g class="ending-stamp-one" transform="rotate(-12 340 260)">
+        <rect x="100" y="205" width="480" height="100" fill="#170006" stroke="#ea4335" stroke-width="8"/>
+        <text x="340" y="275" text-anchor="middle" font-family="monospace" font-size="66" font-weight="900" fill="#ea4335">CENSORED</text>
+      </g>
+      <g class="ending-stamp-two" transform="rotate(10 340 260)">
+        <rect x="100" y="205" width="480" height="100" fill="#170006" stroke="#ea4335" stroke-width="8"/>
+        <text x="340" y="275" text-anchor="middle" font-family="monospace" font-size="66" font-weight="900" fill="#ea4335">CENSORED</text>
+      </g>
+      <text x="128" y="273" clip-path="url(#slogan-typing)" fill="#e8e8e8" font-family="'JetBrains Mono', monospace" font-size="52" font-weight="700" textLength="425" lengthAdjust="spacingAndGlyphs">Don't be evil</text>
+      <g fill="none" stroke-width="9" stroke-linecap="square">
+        <path class="chrome-strike" d="M125 249 L170 257" stroke="#ea4335"/>
+        <path class="chrome-strike" d="M170 257 L214 251" stroke="#fbbc05"/>
+        <path class="chrome-strike" d="M214 251 L258 259" stroke="#34a853"/>
+        <path class="chrome-strike" d="M258 259 L296 252" stroke="#4285f4"/>
+      </g>
+      <text x="90" y="385" clip-path="url(#evil-typing)" fill="#ff1635" font-family="'JetBrains Mono', monospace" font-size="58" font-weight="900" textLength="500" lengthAdjust="spacingAndGlyphs">Google is evil</text>
     </g>
     </svg>
 </section>
