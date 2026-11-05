@@ -406,56 +406,40 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; display: flex;
     <title>G oscura dispara un láser rojo contra Andy</title>
     <desc>Una G negra y amenazante dispara desde su ojo un láser rojo brillante contra Andy.</desc>
     <style>
-      .eye-laser { opacity: 0; animation: laser-fire 2.4s ease-in-out infinite; }
+      .G-drop { transform: none; }
+      .heat-eye { animation: heat-charge 5s ease-in infinite; filter: url(#laser-glow); }
+      .eye-laser { animation: laser-fire 5s linear infinite; }
+      .andy { transform-box: fill-box; transform-origin: center; animation: destroy-andy 5s linear infinite; }
+      .debris rect { transform-box: fill-box; transform-origin: center; animation: shatter 5s ease-out infinite; }
+      .fx, .sweep { display: none; }
+      .redglow { opacity: .12; }
+      @keyframes heat-charge {
+        0%,100% { opacity: .2; }
+        25% { opacity: .7; }
+        40%,80% { opacity: 1; }
+        95% { opacity: .3; }
+      }
       @keyframes laser-fire {
-        0%,48%,90%,100% { opacity: 0; }
-        54%,82% { opacity: 1; }
+        0%,38% { opacity: 0; }
+        42%,76% { opacity: 1; }
+        82%,100% { opacity: 0; }
+      }
+      @keyframes destroy-andy {
+        0%,42% { opacity: 1; transform: scale(1); }
+        48% { opacity: 1; transform: translateX(5px) scale(1.05); }
+        56% { opacity: .4; transform: translateX(-4px) scale(.94); }
+        65%,94% { opacity: 0; transform: scale(.7); }
+        100% { opacity: 1; transform: scale(1); }
+      }
+      @keyframes shatter {
+        0%,48% { opacity: 0; transform: translate(0,0) rotate(0); }
+        54% { opacity: 1; }
+        84%,100% { opacity: 0; transform: translate(var(--dx),var(--dy)) rotate(var(--spin)); }
       }
       @media (prefers-reduced-motion: reduce) {
-        .G-drop, .pupil, .blink, .andy, .fx, .sweep, .redglow, .eye-laser { animation: none !important; }
-        .eye-laser { opacity: .8; }
-      }
-      .G-drop { animation: slam 2.4s cubic-bezier(.3,0,.2,1) infinite; }
-      @keyframes slam {
-        0%   { transform: translateY(-32px); }
-        50%  { transform: translateY(0px); }
-        66%  { transform: translateY(-9px); }
-        82%  { transform: translateY(0px); }
-        100% { transform: translateY(-32px); }
-      }
-      .pupil { animation: look 2.4s ease-in-out infinite; }
-      @keyframes look {
-        0%,40%  { transform: translate(0px,-4px); }
-        50%,90% { transform: translate(0px,6px); }
-        100%    { transform: translate(0px,-4px); }
-      }
-      .blink { animation: blnk 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 50%; }
-      @keyframes blnk {
-        0%,44%  { transform: scaleY(1); }
-        47%     { transform: scaleY(0.05); }
-        50%,100%{ transform: scaleY(1); }
-      }
-      .andy { animation: squish 2.4s cubic-bezier(.3,0,.2,1) infinite; transform-box: fill-box; transform-origin: 50% 100%; }
-      @keyframes squish {
-        0%,47%  { transform: scaleY(1) scaleX(1); }
-        54%,82% { transform: scaleY(0.82) scaleX(1.12); }
-        100%    { transform: scaleY(1) scaleX(1); }
-      }
-      .fx { animation: pop 2.4s ease-in-out infinite; }
-      @keyframes pop {
-        0%,49%  { opacity:0; }
-        57%     { opacity:1; }
-        86%,100%{ opacity:0; }
-      }
-      .sweep { animation: scan 5s linear infinite; }
-      @keyframes scan {
-        from { transform: translateY(-60px); }
-        to   { transform: translateY(580px); }
-      }
-      .redglow { animation: rglow 2.4s ease-in-out infinite; }
-      @keyframes rglow {
-        0%,44%  { opacity:0.18; }
-        50%,100%{ opacity:0.5; }
+        .heat-eye, .eye-laser, .andy, .debris rect { animation: none; }
+        .heat-eye, .eye-laser { opacity: 1; }
+        .debris rect { opacity: 0; }
       }
     </style>
     <defs>
@@ -477,19 +461,9 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; display: flex;
       <path d="M340 28 A120 120 0 1 0 460 148 L460 148 L390 148 A50 50 0 1 1 340 98 Z" fill="#030304" stroke="#75000c" stroke-width="3"/>
       <rect x="370" y="132" width="90" height="34" rx="4" fill="#030304" stroke="#75000c" stroke-width="3"/>
       <path d="M340 42 A106 106 0 1 0 446 148 L390 148 A50 50 0 1 1 340 98 Z" fill="none" stroke="#330000" stroke-width="1" opacity="0.6"/>
-      <ellipse class="blink" cx="318" cy="118" rx="38" ry="22" fill="#e8e8e8"/>
-      <circle cx="318" cy="118" r="14" fill="#880000"/>
-      <g class="pupil">
-        <circle cx="318" cy="118" r="8" fill="#0a0000"/>
-        <circle cx="322" cy="114" r="3" fill="white" opacity="0.7"/>
-      </g>
-      <path d="M280 118 Q318 90 356 118" stroke="#555" stroke-width="1.5" fill="none" opacity="0.5"/>
-      <path d="M280 118 Q318 146 356 118" stroke="#555" stroke-width="1.5" fill="none" opacity="0.5"/>
-      <g stroke="#444" stroke-width="1.2" stroke-linecap="round" opacity="0.6">
-        <line x1="292" y1="102" x2="289" y2="96"/><line x1="304" y1="96" x2="303" y2="90"/>
-        <line x1="318" y1="93" x2="318" y2="87"/><line x1="332" y1="96" x2="333" y2="90"/>
-        <line x1="344" y1="102" x2="347" y2="96"/>
-      </g>
+      <path d="M280 100 L354 115 Q329 139 292 126 Z" fill="#210006" stroke="#840013" stroke-width="3"/>
+      <path class="heat-eye" d="M284 105 L350 117 Q322 133 295 123 Z" fill="#ff002b"/>
+      <path d="M275 94 L358 110" stroke="#000" stroke-width="12"/>
       <ellipse cx="340" cy="252" rx="130" ry="11" fill="#000" opacity="0.4"/>
     </g>
     <!-- ANDY -->
@@ -515,20 +489,34 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; display: flex;
       <path d="M320 314 Q330 324 340 318 Q350 312 360 322" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round"/>
       <ellipse cx="288" cy="272" rx="5" ry="8" fill="#8ee060" opacity="0.7" transform="rotate(-20 288 272)"/>
     </g>
-    <!-- Eye laser: follows the moving G and pupil, drawn over Andy. -->
-    <g class="G-drop" aria-hidden="true">
-      <g class="pupil">
-        <g class="eye-laser">
-          <path d="M318 118 L340 330" stroke="#000" stroke-width="30" opacity=".9"/>
-          <path d="M318 118 L340 330" stroke="#b00010" stroke-width="17" filter="url(#laser-glow)" />
-          <path d="M318 118 L340 330" stroke="#ff1028" stroke-width="7"/>
-          <path d="M318 118 L340 330" stroke="#ffd0d0" stroke-width="2"/>
-          <ellipse cx="318" cy="118" rx="26" ry="16" fill="#e00018" filter="url(#laser-glow)"/>
-          <circle cx="318" cy="118" r="7" fill="#fff0f0"/>
-          <ellipse cx="340" cy="330" rx="23" ry="10" fill="#ed001b" filter="url(#laser-glow)"/>
-          <path d="M326 321 L310 307 M351 324 L368 310 M337 341 L329 355" stroke="#ff3040" stroke-width="3"/>
-        </g>
-      </g>
+    <!-- Bright beam and fragments stay above Andy in the paint order. -->
+    <g class="eye-laser" aria-hidden="true">
+      <path d="M318 118 L340 370" stroke="#ff002b" stroke-width="38" opacity=".6" filter="url(#laser-glow)"/>
+      <path d="M318 118 L340 370" stroke="#f00020" stroke-width="19"/>
+      <path d="M318 118 L340 370" stroke="#ff9b9b" stroke-width="8"/>
+      <path d="M318 118 L340 370" stroke="#fff4e9" stroke-width="4"/>
+      <ellipse cx="318" cy="118" rx="32" ry="18" fill="#ff002b" filter="url(#laser-glow)"/>
+      <ellipse cx="318" cy="118" rx="17" ry="7" fill="#fff0ec"/>
+      <circle cx="340" cy="370" r="38" fill="#ff142b" filter="url(#laser-glow)"/>
+      <circle cx="340" cy="370" r="14" fill="#fff0da"/>
+    </g>
+    <g class="debris" aria-hidden="true">
+<rect x="326" y="320" width="20" height="10" fill="#ff4a22" style="--dx:150px;--dy:0px;--spin:-140deg"/>
+<rect x="334" y="338" width="13" height="10" fill="#6ab04c" style="--dx:139px;--dy:46px;--spin:160deg"/>
+<rect x="342" y="356" width="20" height="10" fill="#6ab04c" style="--dx:106px;--dy:85px;--spin:-140deg"/>
+<rect x="326" y="374" width="13" height="10" fill="#ff4a22" style="--dx:57px;--dy:111px;--spin:160deg"/>
+<rect x="334" y="392" width="20" height="10" fill="#6ab04c" style="--dx:0px;--dy:120px;--spin:-140deg"/>
+<rect x="342" y="320" width="13" height="10" fill="#6ab04c" style="--dx:-57px;--dy:111px;--spin:160deg"/>
+<rect x="326" y="338" width="20" height="10" fill="#ff4a22" style="--dx:-106px;--dy:85px;--spin:-140deg"/>
+<rect x="334" y="356" width="13" height="10" fill="#6ab04c" style="--dx:-139px;--dy:46px;--spin:160deg"/>
+<rect x="342" y="374" width="20" height="10" fill="#6ab04c" style="--dx:-150px;--dy:0px;--spin:-140deg"/>
+<rect x="326" y="392" width="13" height="10" fill="#ff4a22" style="--dx:-139px;--dy:-46px;--spin:160deg"/>
+<rect x="334" y="320" width="20" height="10" fill="#6ab04c" style="--dx:-106px;--dy:-85px;--spin:-140deg"/>
+<rect x="342" y="338" width="13" height="10" fill="#6ab04c" style="--dx:-57px;--dy:-111px;--spin:160deg"/>
+<rect x="326" y="356" width="20" height="10" fill="#ff4a22" style="--dx:0px;--dy:-120px;--spin:-140deg"/>
+<rect x="334" y="374" width="13" height="10" fill="#6ab04c" style="--dx:57px;--dy:-111px;--spin:160deg"/>
+<rect x="342" y="392" width="20" height="10" fill="#6ab04c" style="--dx:106px;--dy:-85px;--spin:-140deg"/>
+<rect x="326" y="320" width="13" height="10" fill="#ff4a22" style="--dx:139px;--dy:-46px;--spin:160deg"/>
     </g>
     <!-- FX -->
     <g class="fx">
