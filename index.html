@@ -403,9 +403,18 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; display: flex;
   <!-- ILLUSTRATION — floated right, sits beside h1 -->
   <div class="hero-illustration">
     <svg width="100%" viewBox="0 0 680 520" role="img" xmlns="http://www.w3.org/2000/svg">
-    <title>G vigilante aplasta a Andy</title>
-    <desc>Símbolo corporativo — letra G con ojo panóptico — descendiendo sobre Andy que queda KO</desc>
+    <title>G oscura dispara un láser rojo contra Andy</title>
+    <desc>Una G negra y amenazante dispara desde su ojo un láser rojo brillante contra Andy.</desc>
     <style>
+      .eye-laser { opacity: 0; animation: laser-fire 2.4s ease-in-out infinite; }
+      @keyframes laser-fire {
+        0%,48%,90%,100% { opacity: 0; }
+        54%,82% { opacity: 1; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .G-drop, .pupil, .blink, .andy, .fx, .sweep, .redglow, .eye-laser { animation: none !important; }
+        .eye-laser { opacity: .8; }
+      }
       .G-drop { animation: slam 2.4s cubic-bezier(.3,0,.2,1) infinite; }
       @keyframes slam {
         0%   { transform: translateY(-32px); }
@@ -449,7 +458,12 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; display: flex;
         50%,100%{ opacity:0.5; }
       }
     </style>
-    <rect width="680" height="520" fill="#090909"/>
+    <defs>
+      <filter id="laser-glow" x="-100%" y="-100%" width="300%" height="300%">
+        <feGaussianBlur stdDeviation="5"/>
+      </filter>
+    </defs>
+    <rect width="680" height="520" fill="#030304"/>
     <g stroke="#00ff41" stroke-width="0.4" opacity="0.05">
       <line x1="0" y1="100" x2="680" y2="100"/><line x1="0" y1="200" x2="680" y2="200"/>
       <line x1="0" y1="300" x2="680" y2="300"/><line x1="0" y1="400" x2="680" y2="400"/>
@@ -460,8 +474,8 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; display: flex;
     <!-- G + EYE -->
     <g class="G-drop">
       <ellipse class="redglow" cx="340" cy="148" rx="148" ry="148" fill="#ff2020"/>
-      <path d="M340 28 A120 120 0 1 0 460 148 L460 148 L390 148 A50 50 0 1 1 340 98 Z" fill="#111111" stroke="#cc0000" stroke-width="3"/>
-      <rect x="370" y="132" width="90" height="34" rx="4" fill="#111111" stroke="#cc0000" stroke-width="3"/>
+      <path d="M340 28 A120 120 0 1 0 460 148 L460 148 L390 148 A50 50 0 1 1 340 98 Z" fill="#030304" stroke="#75000c" stroke-width="3"/>
+      <rect x="370" y="132" width="90" height="34" rx="4" fill="#030304" stroke="#75000c" stroke-width="3"/>
       <path d="M340 42 A106 106 0 1 0 446 148 L390 148 A50 50 0 1 1 340 98 Z" fill="none" stroke="#330000" stroke-width="1" opacity="0.6"/>
       <ellipse class="blink" cx="318" cy="118" rx="38" ry="22" fill="#e8e8e8"/>
       <circle cx="318" cy="118" r="14" fill="#880000"/>
@@ -500,6 +514,21 @@ footer { border-top: 1px solid var(--border); padding: 24px 32px; display: flex;
       <line x1="368" y1="284" x2="356" y2="296" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"/>
       <path d="M320 314 Q330 324 340 318 Q350 312 360 322" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round"/>
       <ellipse cx="288" cy="272" rx="5" ry="8" fill="#8ee060" opacity="0.7" transform="rotate(-20 288 272)"/>
+    </g>
+    <!-- Eye laser: follows the moving G and pupil, drawn over Andy. -->
+    <g class="G-drop" aria-hidden="true">
+      <g class="pupil">
+        <g class="eye-laser">
+          <path d="M318 118 L340 330" stroke="#000" stroke-width="30" opacity=".9"/>
+          <path d="M318 118 L340 330" stroke="#b00010" stroke-width="17" filter="url(#laser-glow)" />
+          <path d="M318 118 L340 330" stroke="#ff1028" stroke-width="7"/>
+          <path d="M318 118 L340 330" stroke="#ffd0d0" stroke-width="2"/>
+          <ellipse cx="318" cy="118" rx="26" ry="16" fill="#e00018" filter="url(#laser-glow)"/>
+          <circle cx="318" cy="118" r="7" fill="#fff0f0"/>
+          <ellipse cx="340" cy="330" rx="23" ry="10" fill="#ed001b" filter="url(#laser-glow)"/>
+          <path d="M326 321 L310 307 M351 324 L368 310 M337 341 L329 355" stroke="#ff3040" stroke-width="3"/>
+        </g>
+      </g>
     </g>
     <!-- FX -->
     <g class="fx">
